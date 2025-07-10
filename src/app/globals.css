@@ -1,42 +1,200 @@
+/* Import Poppins, a geometric sans-serif similar to Futura, from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
+/* Define CSS variables for a high-contrast, dynamic Futurist palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --futurist-red: #FF2D2D;
+    --futurist-cream: #F0EAD6;
+    --futurist-black: #121212;
+    --futurist-grey: #333333;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Keyframe animations for movement and energy */
+@keyframes title-pop {
+    0%, 100% {
+        transform: skewX(-10deg) translate(0, 0);
+        text-shadow: 2px 2px 0px var(--futurist-black);
+    }
+    50% {
+        transform: skewX(-10deg) translate(2px, -2px);
+        text-shadow: -2px 2px 0px var(--futurist-red);
+    }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@keyframes background-grid-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+    background-color: var(--futurist-black);
+    /* Animated grid background for a sense of motion */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: background-grid-scroll 2s linear infinite;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--futurist-cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+#game-container {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    aspect-ratio: 16 / 9;
+      background: var(--futurist-cream);
+    /* A more subtle border, letting the content be the focus */
+    border: 4px solid var(--futurist-black);
+    border-right-color: var(--futurist-red);
+    border-bottom-color: var(--futurist-red);
+    overflow: hidden;
+    box-shadow: none;
+}
+#game-container {
+    position: relative;
+    width: 1280px;
+    height: 900px;
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio for responsiveness */
+    border-radius: 15px;
+    background: var(--bauhaus-white);
+    border: 4px solid var(--bauhaus-black);
+    overflow: hidden;
+    box-shadow: 10px 10px 0px var(--bauhaus-black); /* Hard shadow effect */
+    overflow: hidden;
+    border: 2px solid var(--glow-magenta);
+    animation: border-glow 5s linear infinite;
+    overflow: hidden;
+}
+
+#game-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    /* Mix blend mode for interesting color interactions with game elements */
+    mix-blend-mode: subtract;
   }
+
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    padding: 20px;
+}
+
+.score-display {
+    position: absolute;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--futurist-cream);
+    background: var(--futurist-red);
+    padding: 10px 20px;
+    text-shadow: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Asymmetrical UI placement */
+.score-display:nth-of-type(1) {
+    top: 20px;
+    left: -5px;
+    transform: skewX(-15deg);
+}
+.score-display:nth-of-type(2) {
+    bottom: 20px;
+    right: -5px;
+    transform: skewX(-15deg);
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bauhaus-white);
+    backdrop-filter: none;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+        background: var(--futurist-cream);
+    color: var(--futurist-black);
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+}
+.title {
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--futurist-black);
+    text-shadow: 4px 4px 0px var(--futurist-red);
+    text-transform: uppercase;
+    /* Animated skew for a dynamic "pop" effect */
+    transform: skewX(-10deg);
+    animation: title-pop 1s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 50px;
+    color: var(--futurist-grey);
+    font-weight: 400;
+    text-shadow: none;
+    max-width: 600px;
+}
+
+button {
+    background: var(--futurist-black);
+    pointer-events: auto;
+    color: var(--futurist-cream);
+    border: none;
+    padding: 20px 50px;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.15s ease-out;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    /* Start with a 3D perspective */
+    transform: perspective(500px) rotateX(0deg);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: var(--futurist-red);
+    color: var(--futurist-black);
+    /* "Pop" out at the user on hover */
+    transform: perspective(500px) translateZ(50px) scale(1.05);
+    box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+    transform: perspective(500px) translateZ(20px) scale(0.98);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    transition-duration: 0.1s;
 }
