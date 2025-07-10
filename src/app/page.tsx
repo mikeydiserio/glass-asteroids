@@ -1,3 +1,5 @@
+'use client';
+
 import Head from 'next/head';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import GameOverScreen from '../components/GameOverScreen';
