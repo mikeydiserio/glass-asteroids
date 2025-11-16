@@ -1,33 +1,22 @@
 # Glass Asteroids
 
-A stylish and modern take on the classic Asteroids arcade game, built with [Next.js](https://nextjs.org) and TypeScript.  
+- Yes I know this didnt need to use Next, but I was using create-next-app a lot at the time and wasnt really thinking about it tbh 🥱 dont @ me
 
 
--Blast asteroids, dodge collisions, and compete for a high score in a stylish Futurist version of the game
-
-@create-next-app was used to bootstrap the application.
-
-No BS here just HTML vanilla CSS and JavaScript working together to stress your GPU out with this years most computationally expensive re-release of an 80s game
+- Blast asteroids, dodge collisions, and compete for a high score in a stylish Futurist version of the game built using React, get ready to stress your CPU out with this years most computationally expensive re-release of an 80s game
 
 # Note: App has been deployed as a page in github pages: https://mikeydiserio.github.io/glass-asteroids/
 
-## Features
-
-- Classic Asteroids gameplay with modern visuals
-- Responsive controls (keyboard)
-- Particle effects and smooth animations
-- Score and lives tracking
-- Game states: Start, Playing, Game Over
+Classic Asteroids gameplay with modern visuals, keyboard controls, neat looking effects and smooth animations digital pscyhedellic colour scheme, tracks lives and a score
 
 ## Feature list (dont expect me to be the one adding these, but maybe one day)
 
+[] - High Score Leaderboard
 [] - Time warp + Player Ghost Feature
 [] - Asteroids Multiplayer
 [] - Custom ships 
 [] - Play as an asteroid?
 [] - Game setting modifiers as sliders
-
-
 
 ## Getting Started
 
@@ -61,8 +50,7 @@ No BS here just HTML vanilla CSS and JavaScript working together to stress your 
 
 ## License
 
-MIT
-
+Do whatever you want with it 🎉
 ---
 
 Made with ❤️  by mikey who was procrastinating actual useful development in order to make this a thing.
